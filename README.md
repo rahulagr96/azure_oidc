@@ -1,5 +1,7 @@
 # azure_oidc
 
+[![OIDC-test](https://github.com/rahulagr96/azure_oidc/actions/workflows/oidc_test.yml/badge.svg)](https://github.com/rahulagr96/azure_oidc/actions/workflows/oidc_test.yml)
+
 ## Important Terraform Commands
 - `terraform init`: Initializes a new or existing Terraform configuration by downloading necessary plugins and setting up the backend.
 - `terraform plan`: Creates an execution plan, showing what actions Terraform will take to achieve the desired state.
