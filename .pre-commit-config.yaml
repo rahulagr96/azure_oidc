@@ -1,0 +1,79 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: trailing-whitespace
+    always_run: true
+  - id: end-of-file-fixer
+    always_run: true
+  - id: check-yaml
+    always_run: true
+  - id: check-added-large-files
+    always_run: true
+  - id: check-case-conflict
+    always_run: true
+  - id: check-docstring-first
+    always_run: true
+  - id: check-executables-have-shebangs
+    always_run: true
+  - id: check-merge-conflict
+    always_run: true
+  - id: mixed-line-ending
+    args:
+    - --fix=lf
+    always_run: true
+  - id: check-json
+    always_run: true
+  - id: check-symlinks
+    always_run: true
+  - id: check-toml
+    always_run: true
+  - id: detect-aws-credentials
+    args:
+    - --allow-missing-credentials
+    always_run: true
+  - id: detect-private-key
+    always_run: true
+  - id: forbid-new-submodules
+    always_run: true
+  - id: no-commit-to-branch
+    always_run: true
+  - id: pretty-format-json
+    always_run: true
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.96.2
+  hooks:
+  - id: terraform_providers_lock
+    args:
+    - --hook-config=--mode=only-check-is-current-lockfile-cross-platform
+  - id: terraform_fmt
+    files: \.tf$
+  - id: terraform_tflint
+    files: \.tf$
+  - id: terraform_validate
+    files: \.tf$
+  - id: terraform_checkov
+    args:
+    - --args=--config-file __GIT_WORKING_DIR__/.config/.checkov.yaml
+- repo: https://github.com/terraform-docs/terraform-docs
+  rev: v0.19.0
+  hooks:
+  - id: terraform-docs-go
+    args: [markdown, table, --output-file, README.md, --output-mode, inject, ./terraform_github]
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.14.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2']
+  # - repo: https://github.com/executablebooks/mdformat
+  #   rev: 0.7.18
+  #   hooks:
+  #   - id: mdformat
+  #     additional_dependencies:
+  #     - mdformat-gfm==0.3.6
+  #     - mdformat-black==0.1.1
+  #     - mdformat-shfmt==0.1.0
+  # - repo: https://github.com/adrienverge/yamllint
+  #   rev: v1.35.1
+  #   hooks:
+  #   - id: yamllint
