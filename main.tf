@@ -23,7 +23,7 @@ resource "azuread_service_principal" "github_oidc_sp" {
   use_existing = true
 }
 
-# Assign a role to the Service Principal (e.g., Contributor role)
+# Assign a role to the Service Principal (e.g. Contributor role)
 resource "azurerm_role_assignment" "github_oidc_role_assignment" {
   scope                = data.azurerm_subscription.primary.id
   role_definition_name = "Contributor"
