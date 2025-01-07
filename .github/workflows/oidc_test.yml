@@ -48,8 +48,8 @@ jobs:
         run: |
           terraform init
 
-      - name: Terraform Init
-        id: init
+      - name: Terraform Plan
+        id: plan
         working-directory: terraform-app
         shell: bash
         run: |
