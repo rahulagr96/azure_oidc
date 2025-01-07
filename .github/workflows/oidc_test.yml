@@ -5,6 +5,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Destroy Terraform resources'
+        required: false
+        default: 'false'
 
 permissions:
   id-token: write
@@ -54,3 +59,18 @@ jobs:
         shell: bash
         run: |
           terraform plan
+
+      - name: Terraform Apply
+        id: apply
+        working-directory: terraform-app
+        shell: bash
+        run: |
+          terraform apply -auto-approve
+
+      - name: Terraform Destroy
+        if: ${{ github.event.inputs.destroy == 'true' }}
+        id: destroy
+        working-directory: terraform-app
+        shell: bash
+        run: |
+          terraform destroy -auto-approve
