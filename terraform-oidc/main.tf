@@ -40,8 +40,9 @@ resource "azuread_application_federated_identity_credential" "example" {
   issuer = "https://token.actions.githubusercontent.com"
 
   # Subject format for GitHub Actions (adjust to your repository and branch)
-  subject = "repo:rahulagr96/azure_oidc:ref:refs/heads/main"
-
+  # subject = "repo:rahulagr96/azure_oidc:ref:refs/heads/main"
+  subject = "runner_environment:github-hosted:repository_owner:rahulagr96:repository_visibility:public:repository_id:888498066:repository_owner_id:22197238:repo:rahulagr96/azure_oidc:environment:dev"
+  
   # Audience for Azure AD token exchange
   audiences = ["api://AzureADTokenExchange"]
 }
