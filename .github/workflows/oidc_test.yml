@@ -19,6 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.6.2
+          terraform_wrapper: false
+
       - name: Login to Azure using OIDC
         uses: azure/login@v2
         with:
@@ -34,3 +40,17 @@ jobs:
       - name: Test Azure CLI command
         run: |
           az group list
+
+      - name: Terraform Init
+        id: init
+        working-directory: terraform-app
+        shell: bash
+        run: |
+          terraform init
+
+      - name: Terraform Init
+        id: init
+        working-directory: terraform-app
+        shell: bash
+        run: |
+          terraform plan
