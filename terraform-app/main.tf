@@ -19,6 +19,7 @@ variable "location" {
 
 provider "azurerm" {
   skip_provider_registration = true
+  use_oidc = true
   features {}
 }
 
